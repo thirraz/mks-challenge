@@ -1,33 +1,12 @@
-import { useEffect, useState } from "react"
-import { styled } from "styled-components"
-
-const StyledApp = styled.div`
-	min-height: 100dvh;
-	max-width: 100dvw;
-	width: 100dvw;
-	background: #0f0f0f;
-	color: #fff;
-`
+import StyledApp from "./styled-components/StyledApp"
+import { useProductData } from "./features/products/useProductsData"
 
 export default function App() {
-	// const [data, setData] = useState()
-	const [isLoading, setIsLoading] = useState(false)
+	const { products, isFetchingProducts } = useProductData()
 
-	useEffect(() => {
-		async function fetchData() {
-			setIsLoading(true)
-			const res = await fetch(
-				"https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?page=1&rows=10&sortBy=id&orderBy=ASC"
-			)
+	if (isFetchingProducts) console.log("loading...")
 
-			const resJSON = await res.json()
-			console.log(resJSON)
-			setIsLoading(true)
-		}
-		fetchData()
-	}, [])
-
-	if (isLoading) console.log("carregando")
+	console.log(products)
 
 	return <StyledApp>App</StyledApp>
 }
