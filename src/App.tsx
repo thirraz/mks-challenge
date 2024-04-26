@@ -3,6 +3,7 @@ import { useProductData } from "./features/products/useProductsData"
 import ProductCard from "./components/ProductCard"
 import ProductsGrid from "./components/ProductsGrid"
 import Header from "./components/Header"
+import CartSidebar from "./components/CartSidebar"
 
 export default function App() {
 	const { products, isFetchingProducts } = useProductData()
@@ -24,6 +25,7 @@ export default function App() {
 				<ProductCard />
 				<ProductCard />
 			</ProductsGrid>
+			<CartSidebar />
 		</StyledApp>
 	)
 }

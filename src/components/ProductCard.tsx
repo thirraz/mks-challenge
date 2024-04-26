@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-import ShoppingBag from "./ShoppingBag"
+import ShoppingBagIcon from "./ShoppingBagIcon"
 
 const StyledProductCard = styled.div`
 	max-width: var(--card-width);
@@ -78,7 +78,7 @@ export default function ProductCard() {
 				Redesigned from scratch and completely revised
 			</Description>
 			<Button>
-				<ShoppingBag /> Comprar
+				<ShoppingBagIcon /> Comprar
 			</Button>
 		</StyledProductCard>
 	)
