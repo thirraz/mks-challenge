@@ -1,5 +1,7 @@
 import styled from "styled-components"
 import ShoppingCartIcon from "./ShoppingCartIcon"
+import { useState } from "react"
+import CartSidebar from "./CartSidebar"
 
 const StyledCartMenu = styled.button`
 	display: flex;
@@ -11,16 +13,24 @@ const StyledCartMenu = styled.button`
 	padding: 1rem 1.8rem;
 	gap: 1.3rem;
 	font-weight: bold;
+	cursor: pointer;
 
-	& svg {
+	&:hover {
+		background: #e2e2e2;
 	}
 `
 
 export default function CartMenu() {
+	const [showMenu, setShowMenu] = useState<boolean>(false)
+
 	return (
-		<StyledCartMenu>
-			<ShoppingCartIcon />
-			<span>0</span>
-		</StyledCartMenu>
+		<>
+			<StyledCartMenu onClick={() => setShowMenu(true)}>
+				<ShoppingCartIcon />
+				<span>0</span>
+			</StyledCartMenu>
+
+			{showMenu && <CartSidebar setShowMenu={setShowMenu} />}
+		</>
 	)
 }

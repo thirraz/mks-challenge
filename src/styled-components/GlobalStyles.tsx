@@ -17,8 +17,8 @@ const GlobalStyles = createGlobalStyle`
     margin:0;
     padding:0;
     box-sizing:border-box;
+    transition: background .3s ease-out;
  }
-
  html{
   font-size:62.5%;
   scroll-behavior: smooth;

@@ -10,7 +10,7 @@ const StyledHeader = styled.header`
 	justify-content: space-between;
 	padding: 2rem 4rem;
 	background: var(--color-brand);
-	color: #fff;
+	color: var(--color-white);
 `
 
 export default function Header() {
