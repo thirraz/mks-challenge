@@ -1,5 +1,6 @@
 import StyledApp from "./styled-components/StyledApp"
 import { useProductData } from "./features/products/useProductsData"
+import ProductCard from "./components/ProductCard"
 
 export default function App() {
 	const { products, isFetchingProducts } = useProductData()
@@ -8,5 +9,9 @@ export default function App() {
 
 	console.log(products)
 
-	return <StyledApp>App</StyledApp>
+	return (
+		<StyledApp>
+			<ProductCard />
+		</StyledApp>
+	)
 }
