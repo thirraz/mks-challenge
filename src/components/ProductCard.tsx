@@ -1,15 +1,17 @@
 import { styled } from "styled-components"
+import ShoppingBag from "./ShoppingBag"
 
 const StyledProductCard = styled.div`
-	border: 3px solid black;
-	max-width: 22rem;
+	max-width: var(--card-width);
+	width: var(--card-width);
 
 	font-size: 1.6rem;
-	border-radius: 8px;
+	border-radius: 15px;
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	box-shadow: 0 2px 8px hsla(0, 0%, 0%, 13.52%);
 
 	gap: 1.2rem 0;
 `
@@ -58,6 +60,10 @@ const Button = styled.button`
 	font-family: inherit;
 	font-weight: 600;
 	color: var(--color-white);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0 1rem;
 `
 
 export default function ProductCard() {
@@ -72,7 +78,7 @@ export default function ProductCard() {
 				Redesigned from scratch and completely revised
 			</Description>
 			<Button>
-				<span>icon</span> Comprar
+				<ShoppingBag /> Comprar
 			</Button>
 		</StyledProductCard>
 	)

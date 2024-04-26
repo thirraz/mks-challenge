@@ -8,7 +8,9 @@ const GlobalStyles = createGlobalStyle`
   --color-gray-light: #F9F9F9;
   --color-black:#000000;
 
-  --primary-font:'Montserrat', sans-serif
+  --primary-font:'Montserrat', sans-serif;
+
+  --card-width: 22rem;
  }
 
  *,*::before,*::after{
@@ -24,6 +26,7 @@ const GlobalStyles = createGlobalStyle`
 
  body{
   font-family: var(--primary-font);
+  overflow-x: hidden;
  }
 
  

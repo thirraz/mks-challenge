@@ -1,6 +1,8 @@
 import StyledApp from "./styled-components/StyledApp"
 import { useProductData } from "./features/products/useProductsData"
 import ProductCard from "./components/ProductCard"
+import ProductsGrid from "./components/ProductsGrid"
+import Header from "./components/Header"
 
 export default function App() {
 	const { products, isFetchingProducts } = useProductData()
@@ -11,7 +13,17 @@ export default function App() {
 
 	return (
 		<StyledApp>
-			<ProductCard />
+			<Header />
+			<ProductsGrid>
+				<ProductCard />
+				<ProductCard />
+				<ProductCard />
+				<ProductCard />
+				<ProductCard />
+				<ProductCard />
+				<ProductCard />
+				<ProductCard />
+			</ProductsGrid>
 		</StyledApp>
 	)
 }
