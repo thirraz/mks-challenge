@@ -2,6 +2,7 @@ import { styled } from "styled-components"
 import ShoppingBagIcon from "./ShoppingBagIcon"
 import { useState } from "react"
 import CheckIcon from "./CheckIcon"
+import { ProductData } from "../types/ProductData"
 
 const StyledProductCard = styled.div`
 	max-width: var(--card-width);
@@ -13,6 +14,7 @@ const StyledProductCard = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-between;
 	box-shadow: 0 2px 8px hsla(0, 0%, 0%, 13.52%);
 
 	gap: 1.2rem 0;
@@ -73,22 +75,25 @@ const Button = styled.button`
 	}
 `
 
-export default function ProductCard() {
+export default function ProductCard({
+	brand,
+	description,
+	name,
+	photo,
+	price
+}: ProductData) {
 	const [pickedProduct, setPickedProduct] = useState(false)
 
 	return (
 		<StyledProductCard>
-			<ProductCover
-				src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/applewatch-series7.webp"
-				alt="Apple Watch Series 4 GPS"
-			/>
+			<ProductCover src={photo} alt="Apple Watch Series 4 GPS" />
 			<NameAndPrice>
-				<p>Apple Watch Series 4 GPS</p>
-				<span>R$399</span>
+				<p>
+					{brand} {name}
+				</p>
+				<span>R${price}</span>
 			</NameAndPrice>
-			<Description>
-				Redesigned from scratch and completely revised
-			</Description>
+			<Description>{description}</Description>
 			<Button onClick={() => setPickedProduct(true)}>
 				{!pickedProduct ? (
 					<>

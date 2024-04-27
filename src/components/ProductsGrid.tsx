@@ -12,7 +12,7 @@ const StyledProductsGrid = styled.div`
 `
 
 type Props = {
-	children: React.ReactNode[]
+	children: React.ReactNode
 }
 
 export default function ProductsGrid({ children }: Props) {
