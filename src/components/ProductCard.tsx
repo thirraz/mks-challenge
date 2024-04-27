@@ -22,7 +22,7 @@ const ProductCover = styled.img`
 	max-width: 180px;
 	width: 180px;
 	height: 180px;
-	background: red;
+	background: var(--color-gray);
 	margin-block: 1rem;
 
 	object-fit: cover;
@@ -78,7 +78,10 @@ export default function ProductCard() {
 
 	return (
 		<StyledProductCard>
-			<ProductCover src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/applewatch-series7.webp" />
+			<ProductCover
+				src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/applewatch-series7.webp"
+				alt="Apple Watch Series 4 GPS"
+			/>
 			<NameAndPrice>
 				<p>Apple Watch Series 4 GPS</p>
 				<span>R$399</span>

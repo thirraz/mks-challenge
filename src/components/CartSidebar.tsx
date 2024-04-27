@@ -1,15 +1,20 @@
 import styled from "styled-components"
+import ProductPreview from "./ProductPreview"
 
 const StyledCartSidebar = styled.div`
 	max-height: 100dvh;
 	height: 100dvh;
 	min-width: 20dvw;
 	background: var(--color-brand);
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right: 0;
 	box-shadow: -5px 0 6px hsla(0, 0%, 0%, 13%);
 	padding: 4.7rem 3.6rem;
+
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
 `
 
 const SidebarHeader = styled.div`
@@ -34,6 +39,10 @@ const CloseMenuButton = styled.button`
 	}
 `
 
+const ProductList = styled.ul`
+	list-style-type: none;
+`
+
 type Props = {
 	setShowMenu: (showMenu: boolean) => void
 }
@@ -49,6 +58,12 @@ export default function CartSidebar({ setShowMenu }: Props) {
 					X
 				</CloseMenuButton>
 			</SidebarHeader>
+
+			<ProductList>
+				<li>
+					<ProductPreview />
+				</li>
+			</ProductList>
 		</StyledCartSidebar>
 	)
 }
