@@ -1,5 +1,7 @@
 import { styled } from "styled-components"
 import ShoppingBagIcon from "./ShoppingBagIcon"
+import { useState } from "react"
+import CheckIcon from "./CheckIcon"
 
 const StyledProductCard = styled.div`
 	max-width: var(--card-width);
@@ -64,9 +66,16 @@ const Button = styled.button`
 	align-items: center;
 	justify-content: center;
 	gap: 0 1rem;
+	cursor: pointer;
+
+	& svg {
+		width: 16px;
+	}
 `
 
 export default function ProductCard() {
+	const [pickedProduct, setPickedProduct] = useState(false)
+
 	return (
 		<StyledProductCard>
 			<ProductCover src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/applewatch-series7.webp" />
@@ -77,8 +86,14 @@ export default function ProductCard() {
 			<Description>
 				Redesigned from scratch and completely revised
 			</Description>
-			<Button>
-				<ShoppingBagIcon /> Comprar
+			<Button onClick={() => setPickedProduct(true)}>
+				{!pickedProduct ? (
+					<>
+						<ShoppingBagIcon /> <span>Comprar</span>
+					</>
+				) : (
+					<CheckIcon />
+				)}
 			</Button>
 		</StyledProductCard>
 	)
