@@ -25,6 +25,8 @@ export function CartContextProvider({ children }: ProviderProps) {
 		])
 	}
 
+	console.log(products)
+
 	function remove(productToRemove: string) {
 		setProducts(
 			products.filter(

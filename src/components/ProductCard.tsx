@@ -102,8 +102,8 @@ export default function ProductCard({
 					setPickedProduct(true)
 				}}
 			>
-				{!pickedProduct &&
-				!products.some(product => product.name === name) ? (
+				{!pickedProduct ||
+				!products.find(product => product.name === name) ? (
 					<>
 						<ShoppingBagIcon /> <span>Comprar</span>
 					</>
