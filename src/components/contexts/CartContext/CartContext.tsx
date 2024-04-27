@@ -1,9 +1,10 @@
 import { createContext, useState } from "react"
+import { ProductResponse } from "../../../types/ProductResponse"
 
 type ContextProperties = {
-	products: any[] | undefined
+	products: any[]
 	add: (newProduct: any) => void
-	remove: (id: number) => void
+	remove: (name: string) => void
 }
 
 type ProviderProps = {
@@ -15,14 +16,21 @@ export const CartContext = createContext<ContextProperties>(
 )
 
 export function CartContextProvider({ children }: ProviderProps) {
-	const [products, setProducts] = useState<any>()
+	const [products, setProducts] = useState<ProductResponse[]>([])
 
-	function add(newProduct: any) {
-		setProducts((prevProducts: any) => [...prevProducts, newProduct])
+	function add(newProduct: ProductResponse) {
+		setProducts((prevProducts: ProductResponse[]) => [
+			...prevProducts,
+			newProduct
+		])
 	}
 
-	function remove(id: number) {
-		setProducts(products.filter((prodId: number) => prodId !== id))
+	function remove(productToRemove: string) {
+		setProducts(
+			products.filter(
+				(product: ProductResponse) => product.name !== productToRemove
+			)
+		)
 	}
 
 	return (

@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import { ProductResponse } from "../types/ProductResponse"
+import { useCartContext } from "./contexts/CartContext/useCartContext"
 
 const StyledProductPreview = styled.div`
 	width: 100%;
@@ -57,7 +59,8 @@ const PreviewPrice = styled.p`
 	font-size: 1.4rem;
 `
 
-const ClosePreview = styled.div`
+const ClosePreview = styled.button`
+	border: none;
 	border-radius: 50%;
 	background: var(--color-black);
 	width: 22px;
@@ -66,14 +69,42 @@ const ClosePreview = styled.div`
 	place-items: center;
 	font-weight: 500;
 	color: #fff;
+	cursor: pointer;
 
 	position: absolute;
 	top: -10%;
 	right: -3%;
 `
 
-export default function ProductPreview() {
+export default function ProductPreview({
+	brand,
+	name,
+	photo,
+	price
+}: ProductResponse) {
+	const { remove } = useCartContext()
+
 	return (
+		<StyledProductPreview>
+			<ClosePreview onClick={() => remove(name)}>X</ClosePreview>
+			<PreviewCover src={photo} alt={`${brand} ${name}`} />
+			<PreviewName>
+				{brand} {name}
+			</PreviewName>
+			<Quantity>
+				<span>Qtd.</span>
+				<QuantityManager>
+					<PreviewBtn>-</PreviewBtn>
+					<p>1</p>
+					<PreviewBtn>+</PreviewBtn>
+				</QuantityManager>
+			</Quantity>
+			<PreviewPrice>R${price}</PreviewPrice>
+		</StyledProductPreview>
+	)
+}
+
+/* 
 		<StyledProductPreview>
 			<ClosePreview>X</ClosePreview>
 			<PreviewCover
@@ -91,5 +122,4 @@ export default function ProductPreview() {
 			</Quantity>
 			<PreviewPrice>R$399</PreviewPrice>
 		</StyledProductPreview>
-	)
-}
+*/

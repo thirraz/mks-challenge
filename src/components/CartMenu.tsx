@@ -2,6 +2,7 @@ import styled from "styled-components"
 import ShoppingCartIcon from "./ShoppingCartIcon"
 import { useState } from "react"
 import CartSidebar from "./CartSidebar"
+import { useCartContext } from "./contexts/CartContext/useCartContext"
 
 const StyledCartMenu = styled.button`
 	display: flex;
@@ -22,12 +23,13 @@ const StyledCartMenu = styled.button`
 
 export default function CartMenu() {
 	const [showMenu, setShowMenu] = useState<boolean>(false)
+	const { products } = useCartContext()
 
 	return (
 		<>
 			<StyledCartMenu onClick={() => setShowMenu(true)}>
 				<ShoppingCartIcon />
-				<span>0</span>
+				<span>{products.length}</span>
 			</StyledCartMenu>
 
 			{showMenu && <CartSidebar setShowMenu={setShowMenu} />}

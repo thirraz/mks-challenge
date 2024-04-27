@@ -3,6 +3,7 @@ import ShoppingBagIcon from "./ShoppingBagIcon"
 import { useState } from "react"
 import CheckIcon from "./CheckIcon"
 import { ProductData } from "../types/ProductData"
+import { useCartContext } from "./contexts/CartContext/useCartContext"
 
 const StyledProductCard = styled.div`
 	max-width: var(--card-width);
@@ -83,6 +84,7 @@ export default function ProductCard({
 	price
 }: ProductData) {
 	const [pickedProduct, setPickedProduct] = useState(false)
+	const { products, add } = useCartContext()
 
 	return (
 		<StyledProductCard>
@@ -94,8 +96,14 @@ export default function ProductCard({
 				<span>R${price}</span>
 			</NameAndPrice>
 			<Description>{description}</Description>
-			<Button onClick={() => setPickedProduct(true)}>
-				{!pickedProduct ? (
+			<Button
+				onClick={() => {
+					add({ brand, description, name, photo, price })
+					setPickedProduct(true)
+				}}
+			>
+				{!pickedProduct &&
+				!products.some(product => product.name === name) ? (
 					<>
 						<ShoppingBagIcon /> <span>Comprar</span>
 					</>

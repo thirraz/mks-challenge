@@ -1,5 +1,7 @@
 import styled from "styled-components"
 import ProductPreview from "./ProductPreview"
+import { useCartContext } from "./contexts/CartContext/useCartContext"
+import { ProductResponse } from "../types/ProductResponse"
 
 const StyledCartSidebar = styled.div`
 	max-height: 100dvh;
@@ -41,6 +43,9 @@ const CloseMenuButton = styled.button`
 
 const ProductList = styled.ul`
 	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	gap: 2.2rem;
 `
 
 type Props = {
@@ -48,6 +53,8 @@ type Props = {
 }
 
 export default function CartSidebar({ setShowMenu }: Props) {
+	const { products } = useCartContext()
+
 	return (
 		<StyledCartSidebar>
 			<SidebarHeader>
@@ -60,9 +67,11 @@ export default function CartSidebar({ setShowMenu }: Props) {
 			</SidebarHeader>
 
 			<ProductList>
-				<li>
-					<ProductPreview />
-				</li>
+				{products.map((product: ProductResponse) => (
+					<li key={product.id}>
+						<ProductPreview {...product} />
+					</li>
+				))}
 			</ProductList>
 		</StyledCartSidebar>
 	)

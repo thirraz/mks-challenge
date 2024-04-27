@@ -15,7 +15,7 @@ export default function App() {
 			<Header />
 			<ProductsGrid>
 				{products?.products?.map((product: ProductData) => (
-					<ProductCard {...product} />
+					<ProductCard {...product} key={product.id} />
 				))}
 			</ProductsGrid>
 		</StyledApp>
