@@ -86,6 +86,8 @@ export default function ProductCard({
 	const [pickedProduct, setPickedProduct] = useState(false)
 	const { products, add } = useCartContext()
 
+	const productHasBeenPicked = products.find(product => product.name === name)
+
 	return (
 		<StyledProductCard>
 			<ProductCover src={photo} alt="Apple Watch Series 4 GPS" />
@@ -102,8 +104,7 @@ export default function ProductCard({
 					setPickedProduct(true)
 				}}
 			>
-				{!pickedProduct ||
-				!products.find(product => product.name === name) ? (
+				{!pickedProduct || !productHasBeenPicked ? (
 					<>
 						<ShoppingBagIcon /> <span>Comprar</span>
 					</>
