@@ -38,9 +38,11 @@ export default function ProductPreview({
 			<Quantity>
 				<span>Qtd.</span>
 				<QuantityManager>
-					<PreviewBtn onClick={() => handleQtdDecrease}>-</PreviewBtn>
+					{/* @ts-expect-error  'No overload matches this call' */}
+					<PreviewBtn onClick={handleQtdDecrease}>-</PreviewBtn>
 					<p>{quantity}</p>
-					<PreviewBtn onClick={() => handleQtdIncrease}>+</PreviewBtn>
+					{/* @ts-expect-error  'No overload matches this call' */}
+					<PreviewBtn onClick={handleQtdIncrease}>+</PreviewBtn>
 				</QuantityManager>
 			</Quantity>
 			<PreviewPrice>R${price}</PreviewPrice>
