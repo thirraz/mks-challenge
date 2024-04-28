@@ -11,10 +11,10 @@ const StyledCartSidebar = styled.div`
 	right: 0;
 	bottom: 0;
 	box-shadow: -5px 0 6px hsla(0, 0%, 0%, 13%);
-	padding: 4.7rem 3.6rem;
 
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	gap: 4rem;
 	overflow-y: scroll;
 
@@ -48,6 +48,8 @@ const CloseMenuButton = styled.button`
 `
 
 const ProductList = styled.ul`
+	padding: 4.7rem 3.6rem 0;
+
 	list-style-type: none;
 	display: flex;
 	flex-direction: column;
@@ -57,6 +59,8 @@ const ProductList = styled.ul`
 	color: var(--color-white);
 `
 const SidebarHeader = styled.div`
+	padding: 4.7rem 3.6rem 0;
+
 	display: flex;
 	justify-content: space-between;
 	font-size: 2rem;

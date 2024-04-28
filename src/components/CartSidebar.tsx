@@ -9,6 +9,7 @@ import {
 	SidebarHeader,
 	StyledCartSidebar
 } from "../styled-components/cart-sidebar/CartSidebarStyles"
+import CheckIn from "./CheckIn"
 
 type Props = {
 	setShowMenu: (showMenu: boolean) => void
@@ -19,31 +20,35 @@ export default function CartSidebar({ setShowMenu }: Props) {
 
 	return (
 		<StyledCartSidebar>
-			<SidebarHeader>
-				Carrinho
-				<br />
-				de compras
-				<CloseMenuButton onClick={() => setShowMenu(false)}>
-					X
-				</CloseMenuButton>
-			</SidebarHeader>
+			<div>
+				<SidebarHeader>
+					Carrinho
+					<br />
+					de compras
+					<CloseMenuButton onClick={() => setShowMenu(false)}>
+						X
+					</CloseMenuButton>
+				</SidebarHeader>
 
-			<ProductList>
-				{!products.length && <p>Por favor selectione algum produto</p>}
-				<AnimatePresence>
-					{products.map((product: ProductResponse) => (
-						<motion.li
-							key={product.id}
-							initial={{ opacity: 0, x: 30 }}
-							animate={{ opacity: 1, x: 0 }}
-							exit={{ opacity: 0, x: -30 }}
-							transition={{ duration: 0.2 }}
-						>
-							<ProductPreview {...product} key={product.brand} />
-						</motion.li>
-					))}
-				</AnimatePresence>
-			</ProductList>
+				<ProductList>
+					{!products.length && <p>Por favor selectione algum produto</p>}
+					<AnimatePresence>
+						{products.map((product: ProductResponse) => (
+							<motion.li
+								key={product.id}
+								initial={{ opacity: 0, x: 30 }}
+								animate={{ opacity: 1, x: 0 }}
+								exit={{ opacity: 0, x: -30 }}
+								transition={{ duration: 0.2 }}
+							>
+								<ProductPreview {...product} key={product.brand} />
+							</motion.li>
+						))}
+					</AnimatePresence>
+				</ProductList>
+			</div>
+
+			<CheckIn />
 		</StyledCartSidebar>
 	)
 }
