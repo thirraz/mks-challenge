@@ -33,10 +33,6 @@ export function CartContextProvider({ children }: ProviderProps) {
 		)
 	}
 
-	useEffect(() => {
-		localStorage.setItem("products", JSON.stringify(products))
-	}, [products])
-
 	return (
 		<CartContext.Provider value={{ products, add, remove }}>
 			{children}
