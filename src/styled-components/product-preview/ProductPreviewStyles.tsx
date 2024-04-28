@@ -13,6 +13,15 @@ const StyledProductPreview = styled.div`
 	grid-template-columns: 50px 10rem 1fr min-content;
 	align-items: center;
 	gap: 1.4rem;
+
+	@media only screen and (max-width: 860px) {
+		max-width: 100dvw;
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(4, fit-content);
+		place-items: center;
+		text-align: center;
+		row-gap: 1.3rem;
+	}
 `
 
 const PreviewCover = styled.img`
@@ -26,7 +35,11 @@ const PreviewName = styled.p`
 	font-weight: 500;
 `
 
-const Quantity = styled.div``
+const Quantity = styled.div`
+	& span {
+		font-size: clamp(1.2rem, 2dvw, 1.3rem);
+	}
+`
 
 const QuantityManager = styled.div`
 	border: 1px solid #bfbfbf;

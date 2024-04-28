@@ -19,10 +19,12 @@ export function CartContextProvider({ children }: ProviderProps) {
 	const [products, setProducts] = useState<ProductResponse[]>([])
 
 	function add(newProduct: ProductResponse) {
-		setProducts((prevProducts: ProductResponse[]) => [
-			...prevProducts,
-			newProduct
-		])
+		// if products[] already have newProduct, ignore
+		if (!products.find(product => product.name === newProduct.name))
+			setProducts((prevProducts: ProductResponse[]) => [
+				...prevProducts,
+				newProduct
+			])
 	}
 
 	function remove(productToRemove: string) {

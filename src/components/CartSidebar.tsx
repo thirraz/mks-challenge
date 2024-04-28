@@ -29,6 +29,7 @@ export default function CartSidebar({ setShowMenu }: Props) {
 			</SidebarHeader>
 
 			<ProductList>
+				{!products.length && <p>Por favor selectione algum produto</p>}
 				<AnimatePresence>
 					{products.map((product: ProductResponse) => (
 						<motion.li

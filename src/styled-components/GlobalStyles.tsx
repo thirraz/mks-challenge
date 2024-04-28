@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
 
   --primary-font:'Montserrat', sans-serif;
 
-  --card-width: 22rem;
+  --card-width: 25rem;
  }
 
  *,*::before,*::after{

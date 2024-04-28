@@ -13,7 +13,7 @@ const StyledProductCard = styled.div`
 	justify-content: space-between;
 	box-shadow: 0 2px 8px hsla(0, 0%, 0%, 13.52%);
 
-	gap: 1.2rem 0;
+	gap: 0.5rem 0;
 `
 
 const ProductCover = styled.img`
