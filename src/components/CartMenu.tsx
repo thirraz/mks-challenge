@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import ShoppingCartIcon from "./ShoppingCartIcon"
-import { useState } from "react"
 import CartSidebar from "./CartSidebar"
 import { useCartContext } from "./contexts/CartContext/useCartContext"
+import { useState } from "react"
 
 const StyledCartMenu = styled.button`
 	display: flex;

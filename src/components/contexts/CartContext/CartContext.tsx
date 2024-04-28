@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { ProductResponse } from "../../../types/ProductResponse"
 
 type ContextProperties = {
@@ -25,8 +25,6 @@ export function CartContextProvider({ children }: ProviderProps) {
 		])
 	}
 
-	console.log(products)
-
 	function remove(productToRemove: string) {
 		setProducts(
 			products.filter(
@@ -34,6 +32,10 @@ export function CartContextProvider({ children }: ProviderProps) {
 			)
 		)
 	}
+
+	useEffect(() => {
+		localStorage.setItem("products", JSON.stringify(products))
+	}, [products])
 
 	return (
 		<CartContext.Provider value={{ products, add, remove }}>

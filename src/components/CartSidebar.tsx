@@ -72,9 +72,9 @@ export default function CartSidebar({ setShowMenu }: Props) {
 					{products.map((product: ProductResponse) => (
 						<motion.li
 							key={product.id}
-							initial={{ opacity: 0, y: 30 }}
-							animate={{ opacity: 1, y: 0 }}
-							exit={{ opacity: 0, y: 15 }}
+							initial={{ opacity: 0, x: 30 }}
+							animate={{ opacity: 1, x: 0 }}
+							exit={{ opacity: 0, x: -30 }}
 							transition={{ duration: 0.2 }}
 						>
 							<ProductPreview {...product} key={product.brand} />
