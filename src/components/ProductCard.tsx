@@ -1,3 +1,5 @@
+import { motion } from "framer-motion"
+
 import { styled } from "styled-components"
 import ShoppingBagIcon from "./ShoppingBagIcon"
 import { useState } from "react"
@@ -109,7 +111,16 @@ export default function ProductCard({
 						<ShoppingBagIcon /> <span>Comprar</span>
 					</>
 				) : (
-					<CheckIcon />
+					<>
+						<CheckIcon />{" "}
+						<motion.span
+							initial={{ opacity: 0, x: -10 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.2 }}
+						>
+							ADDED
+						</motion.span>
+					</>
 				)}
 			</Button>
 		</StyledProductCard>

@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion"
 import styled from "styled-components"
 import ProductPreview from "./ProductPreview"
 import { useCartContext } from "./contexts/CartContext/useCartContext"
@@ -67,11 +68,19 @@ export default function CartSidebar({ setShowMenu }: Props) {
 			</SidebarHeader>
 
 			<ProductList>
-				{products.map((product: ProductResponse) => (
-					<li key={product.id}>
-						<ProductPreview {...product} />
-					</li>
-				))}
+				<AnimatePresence>
+					{products.map((product: ProductResponse) => (
+						<motion.li
+							key={product.id}
+							initial={{ opacity: 0, y: 30 }}
+							animate={{ opacity: 1, y: 0 }}
+							exit={{ opacity: 0, y: 15 }}
+							transition={{ duration: 0.2 }}
+						>
+							<ProductPreview {...product} key={product.brand} />
+						</motion.li>
+					))}
+				</AnimatePresence>
 			</ProductList>
 		</StyledCartSidebar>
 	)
