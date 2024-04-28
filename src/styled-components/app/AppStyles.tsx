@@ -5,4 +5,4 @@ const StyledApp = styled.div`
 	max-width: 100dvw;
 	width: 100dvw;
 `
-export default StyledApp
+export { StyledApp }

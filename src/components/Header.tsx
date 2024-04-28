@@ -1,17 +1,6 @@
-import styled from "styled-components"
 import Logo from "./Logo"
 import CartMenu from "./CartMenu"
-
-const StyledHeader = styled.header`
-	max-width: 100dvw;
-	width: 100dvw;
-
-	display: flex;
-	justify-content: space-between;
-	padding: 2rem 4rem;
-	background: var(--color-brand);
-	color: var(--color-white);
-`
+import { StyledHeader } from "../styled-components/header/HeaderStyles"
 
 export default function Header() {
 	return (
