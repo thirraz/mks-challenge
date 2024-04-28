@@ -6,7 +6,7 @@ const StyledHeader = styled.header`
 
 	display: flex;
 	justify-content: space-between;
-	padding: 2rem 4rem;
+	padding: 2rem min(15rem, 10vw);
 	background: var(--color-brand);
 	color: var(--color-white);
 `
