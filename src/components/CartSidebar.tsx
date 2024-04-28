@@ -10,6 +10,7 @@ import {
 	StyledCartSidebar
 } from "../styled-components/cart-sidebar/CartSidebarStyles"
 import CheckIn from "./CheckIn"
+import { useState } from "react"
 
 type Props = {
 	setShowMenu: (showMenu: boolean) => void
@@ -17,6 +18,10 @@ type Props = {
 
 export default function CartSidebar({ setShowMenu }: Props) {
 	const { products } = useCartContext()
+	const [quantity, setQuantity] = useState(1)
+
+	const handleQtdIncrease = () => setQuantity(qtd => qtd + 1)
+	const handleQtdDecrease = () => setQuantity(qtd => qtd - 1)
 
 	return (
 		<StyledCartSidebar>
@@ -41,14 +46,20 @@ export default function CartSidebar({ setShowMenu }: Props) {
 								exit={{ opacity: 0, x: -30 }}
 								transition={{ duration: 0.2 }}
 							>
-								<ProductPreview {...product} key={product.brand} />
+								<ProductPreview
+									quantity={quantity}
+									handleQtdIncrease={handleQtdIncrease}
+									handleQtdDecrease={handleQtdDecrease}
+									{...product}
+									key={product.brand}
+								/>
 							</motion.li>
 						))}
 					</AnimatePresence>
 				</ProductList>
 			</div>
 
-			<CheckIn />
+			<CheckIn quantity={quantity} />
 		</StyledCartSidebar>
 	)
 }

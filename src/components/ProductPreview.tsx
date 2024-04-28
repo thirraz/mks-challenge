@@ -10,19 +10,23 @@ import {
 	QuantityManager,
 	StyledProductPreview
 } from "../styled-components/product-preview/ProductPreviewStyles"
-import { useState } from "react"
+
+type QuantityState = {
+	quantity: number
+	handleQtdIncrease: (qtd: number) => void
+	handleQtdDecrease: (qtd: number) => void
+}
 
 export default function ProductPreview({
 	brand,
 	name,
 	photo,
-	price
-}: ProductResponse) {
+	price,
+	quantity,
+	handleQtdIncrease,
+	handleQtdDecrease
+}: ProductResponse & QuantityState) {
 	const { remove } = useCartContext()
-	const [quantity, setQuantity] = useState(1)
-
-	const handleQtdIncrease = () => setQuantity(qtd => qtd + 1)
-	const handleQtdDecrease = () => setQuantity(qtd => qtd - 1)
 
 	return (
 		<StyledProductPreview>
@@ -34,9 +38,9 @@ export default function ProductPreview({
 			<Quantity>
 				<span>Qtd.</span>
 				<QuantityManager>
-					<PreviewBtn onClick={handleQtdDecrease}>-</PreviewBtn>
+					<PreviewBtn onClick={() => handleQtdDecrease}>-</PreviewBtn>
 					<p>{quantity}</p>
-					<PreviewBtn onClick={handleQtdIncrease}>+</PreviewBtn>
+					<PreviewBtn onClick={() => handleQtdIncrease}>+</PreviewBtn>
 				</QuantityManager>
 			</Quantity>
 			<PreviewPrice>R${price}</PreviewPrice>
