@@ -21,7 +21,7 @@ export default function ProductCard({
 	price
 }: ProductData) {
 	const [pickedProduct, setPickedProduct] = useState(false)
-	const { products, add } = useCartContext()
+	const { products, add, incQtd } = useCartContext()
 
 	const productHasBeenPicked = products.find(product => product.name === name)
 
@@ -38,6 +38,7 @@ export default function ProductCard({
 			<Button
 				onClick={() => {
 					add({ brand, description, name, photo, price })
+					incQtd(Number(price))
 					setPickedProduct(true)
 				}}
 			>

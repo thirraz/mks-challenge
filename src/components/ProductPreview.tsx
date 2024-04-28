@@ -10,23 +10,20 @@ import {
 	QuantityManager,
 	StyledProductPreview
 } from "../styled-components/product-preview/ProductPreviewStyles"
-
-type QuantityState = {
-	quantity: number
-	handleQtdIncrease: (qtd: number) => void
-	handleQtdDecrease: (qtd: number) => void
-}
+import { useState } from "react"
 
 export default function ProductPreview({
 	brand,
 	name,
 	photo,
-	price,
-	quantity,
-	handleQtdIncrease,
-	handleQtdDecrease
-}: ProductResponse & QuantityState) {
-	const { remove } = useCartContext()
+	price
+}: ProductResponse) {
+	const { remove, incQtd, decQtd } = useCartContext()
+
+	const [quantity, setQuantity] = useState(1)
+
+	const handleQtdIncrease = () => setQuantity(qtd => qtd + 1)
+	const handleQtdDecrease = () => setQuantity(qtd => qtd - 1)
 
 	return (
 		<StyledProductPreview>
@@ -38,11 +35,23 @@ export default function ProductPreview({
 			<Quantity>
 				<span>Qtd.</span>
 				<QuantityManager>
-					{/* @ts-expect-error  'No overload matches this call' */}
-					<PreviewBtn onClick={handleQtdDecrease}>-</PreviewBtn>
+					<PreviewBtn
+						onClick={() => {
+							handleQtdDecrease()
+							decQtd(Number(price))
+						}}
+					>
+						-
+					</PreviewBtn>
 					<p>{quantity}</p>
-					{/* @ts-expect-error  'No overload matches this call' */}
-					<PreviewBtn onClick={handleQtdIncrease}>+</PreviewBtn>
+					<PreviewBtn
+						onClick={() => {
+							handleQtdIncrease()
+							incQtd(Number(price))
+						}}
+					>
+						+
+					</PreviewBtn>
 				</QuantityManager>
 			</Quantity>
 			<PreviewPrice>R${price}</PreviewPrice>

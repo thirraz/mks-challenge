@@ -27,15 +27,11 @@ const TotalPrice = styled.div`
 		font-weight: bold;
 	}
 `
-type Props = {
-	quantity: number
-}
-export default function CheckIn({ quantity }: Props) {
-	const { products } = useCartContext()
-	const totalPrice = products?.reduce(
-		(acc, cur) => acc + +cur.price * quantity,
-		0
-	)
+
+export default function CheckIn() {
+	const { quantity } = useCartContext()
+
+	const totalPrice = quantity?.reduce((acc, cur) => acc + +cur, 0)
 	console.log(totalPrice)
 
 	return (

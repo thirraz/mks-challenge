@@ -5,6 +5,9 @@ type ContextProperties = {
 	products: any[]
 	add: (newProduct: any) => void
 	remove: (name: string) => void
+	quantity: number[]
+	incQtd: (prod: number) => void
+	decQtd: (prod: number) => void
 }
 
 type ProviderProps = {
@@ -17,6 +20,15 @@ export const CartContext = createContext<ContextProperties>(
 
 export function CartContextProvider({ children }: ProviderProps) {
 	const [products, setProducts] = useState<ProductResponse[]>([])
+	const [quantity, setQuantity] = useState<number[]>([])
+
+	function incQtd(product: number) {
+		setQuantity([...quantity, product])
+	}
+
+	function decQtd(product: number) {
+		setQuantity(quantity.filter(qtd => qtd !== product))
+	}
 
 	function add(newProduct: ProductResponse) {
 		// if products[] already have newProduct, ignore
@@ -36,7 +48,9 @@ export function CartContextProvider({ children }: ProviderProps) {
 	}
 
 	return (
-		<CartContext.Provider value={{ products, add, remove }}>
+		<CartContext.Provider
+			value={{ products, add, remove, quantity, incQtd, decQtd }}
+		>
 			{children}
 		</CartContext.Provider>
 	)
